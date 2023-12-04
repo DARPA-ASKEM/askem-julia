@@ -33,7 +33,7 @@ function "check_suffix" {
 # ----------------------------------------------------------------------------------------------------------------------
 
 group "prod" {
-  targets = ["askem-julia-base"]
+  targets = ["askem-julia"]
 }
 
 group "default" {
@@ -46,9 +46,9 @@ target "_platforms" {
   platforms = ["linux/amd64"]
 }
 
-target "askem-julia-base" {
+target "askem-julia" {
   inherits = ["_platforms"]
 	context = "."
-	tags = tag("askem-julia-base", "", "")
+	tags = tag("askem-julia", "", "")
 	dockerfile = "docker/Dockerfile"
 }
