@@ -33,8 +33,6 @@ env_dir = if target == "local"
     env_dir
 end
 
-Pkg.instantiate()
-
 status_buffer = IOBuffer()
 Pkg.status(io=status_buffer); seekstart(status_buffer)
 pkg_pattern = r"] (\S+) "
