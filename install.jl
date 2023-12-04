@@ -11,7 +11,8 @@ Pkg.instantiate()
 
 import PackageCompiler 
 
-target = if !(length(ARGS) == 0) lowercase(ARGS[1]) else "local" end
+target = !(length(ARGS) == 0) ? lowercase(ARGS[1]) : "local"
+cpu_target = target == "local" ? "native" : "generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)"
 
 sysimage_dir = "/"
 env_dir = if target == "local"
@@ -42,7 +43,9 @@ package_names = [
     if match(pkg_pattern, line) !== nothing
 ]
 
-PackageCompiler.create_sysimage(package_names; precompile_execution_file="precompile.jl", sysimage_path=sysimage_dir*"ASKEM-Sysimage.so")
+@info "Compiling for cpu_target=$cpu_target"
+
+PackageCompiler.create_sysimage(package_names; precompile_execution_file="precompile.jl", sysimage_path=sysimage_dir*"ASKEM-Sysimage.so", cpu_target=cpu_target)
 if target == "local"
     @info """
         To use the basic (slower) mode, simply run:
