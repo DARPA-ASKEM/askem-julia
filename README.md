@@ -1,6 +1,6 @@
 # Standard ASKEM Julia Environment
 This repo specifies packages developed or used by the ASKEM program. Additionally,
-this environment can be installed locally or through Docker and provides optional hosting for
+this environment can be installed on a local machine or Docker and provides optional hosting for
 IJulia and Pluto.
 
 ## Installation
