@@ -1,4 +1,6 @@
 #!/usr/bin/env -S julia --threads=4 --startup=no --color yes
+EXCLUDED_PACKAGES = []
+
 NEEDED_VERSION = v"1.9"
 if VERSION < NEEDED_VERSION
     throw("Currently running Julia $VERSION but the ASKEM environment requires $NEEDED_VERSION")
@@ -41,7 +43,7 @@ package_names = [
     for line in eachline(status_buffer) 
     if match(pkg_pattern, line) !== nothing
 ]
-excluded = ["Oceananigans"] |> filter ∘ !in # TODO: Move list to top of file?
+excluded = EXCLUDED_PACKAGES |> filter ∘ !in
 package_names = excluded(package_names)
 
 @info "Compiling for cpu_target=$cpu_target"
