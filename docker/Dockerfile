@@ -15,6 +15,7 @@ COPY install.jl install.jl
 COPY precompile.jl precompile.jl
 RUN ./install.jl docker
 RUN julia -e 'using Pkg; using IJulia; IJulia.installkernel("Julia ASKEM"; julia=`julia --project=/ --threads=4 -J/ASKEM-Sysimage.so`)'
+RUN rm -rf /usr/local/julia/compiled
 
 EXPOSE 8888
 EXPOSE 1234
