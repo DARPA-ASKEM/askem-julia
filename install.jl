@@ -1,5 +1,5 @@
 #!/usr/bin/env -S julia --threads=4 --startup=no --color yes
-EXCLUDED_PACKAGES = []
+EXCLUDED_PACKAGES = ["Oceananigans"]
 
 NEEDED_VERSION = v"1.9"
 if VERSION < NEEDED_VERSION
