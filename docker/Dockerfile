@@ -8,14 +8,12 @@ ENV JULIA_DEPOT_PATH=/usr/local/julia
 ENV JULIA_PROJECT=/
 
 WORKDIR /
-COPY Project.toml Project.toml
-COPY Manifest.toml Manifest.toml
+COPY Project.toml Manifest.toml /
 RUN julia -e 'using Pkg; Pkg.instantiate()'
-COPY install.jl install.jl
-COPY precompile.jl precompile.jl
-RUN ./install.jl docker
-RUN julia -e 'using Pkg; using IJulia; IJulia.installkernel("Julia ASKEM"; julia=`julia --project=/ --threads=4 -J/ASKEM-Sysimage.so`)'
-RUN rm -rf /usr/local/julia/compiled
+COPY install.jl precompile.jl /
+RUN ./install.jl docker \
+    julia -e 'using Pkg; using IJulia; IJulia.installkernel("Julia ASKEM"; julia=`julia --project=/ --threads=4 -J/ASKEM-Sysimage.so`)' && \
+    rm -rf /usr/local/julia/compiled
 
 EXPOSE 8888
 EXPOSE 1234
