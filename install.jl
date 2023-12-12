@@ -1,4 +1,6 @@
 #!/usr/bin/env -S julia --threads=4 --startup=no --color yes
+EXCLUDED_FROM_LOCAL = ["Oceananigans", "libevent_jll", "OpenSSL_jll","PMIx_jll"]
+
 NEEDED_VERSION = v"1.9"
 if VERSION < NEEDED_VERSION
     throw("Currently running Julia $VERSION but the ASKEM environment requires $NEEDED_VERSION")
@@ -41,8 +43,13 @@ package_names = [
     for line in eachline(status_buffer) 
     if match(pkg_pattern, line) !== nothing
 ]
-excluded = ["Oceananigans"] |> filter ∘ !in # TODO: Move list to top of file?
-package_names = excluded(package_names)
+if target == "local"
+    local_only = EXCLUDED_FROM_LOCAL |> filter ∘ !in
+    original_size = length(package_names)
+    package_names = local_only(package_names)
+    new_size = length(package_names)
+    @info "Excluding $(original_size - new_size) packages"
+end
 
 @info "Compiling for cpu_target=$cpu_target"
 
