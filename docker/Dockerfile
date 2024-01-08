@@ -1,4 +1,4 @@
-FROM julia:1.9
+FROM julia:1.10
 
 RUN apt update && \
     apt install -y clang jupyter libevent-core-2.1-7 libevent-pthreads-2.1-7 && \
