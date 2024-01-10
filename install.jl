@@ -1,7 +1,7 @@
 #!/usr/bin/env -S julia --threads=4 --startup=no --color yes
 EXCLUDED_FROM_LOCAL = ["Oceananigans", "libevent_jll", "OpenSSL_jll","PMIx_jll"]
 
-NEEDED_VERSION = v"1.9"
+NEEDED_VERSION = v"1.10"
 if VERSION < NEEDED_VERSION
     throw("Currently running Julia $VERSION but the ASKEM environment requires $NEEDED_VERSION")
 end
