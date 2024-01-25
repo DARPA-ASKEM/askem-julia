@@ -1,5 +1,5 @@
 #!/usr/bin/env -S julia --threads=4 --startup=no --color yes
-EXCLUDED_FROM_LOCAL = ["Oceananigans", "libevent_jll", "OpenSSL_jll","PMIx_jll"]
+EXCLUDED_FROM_LOCAL = ["Oceananigans", "libevent_jll", "OpenSSL_jll","PMIx_jll", "prrte_jll"]
 
 NEEDED_VERSION = v"1.10"
 if VERSION < NEEDED_VERSION
@@ -20,7 +20,7 @@ env_dir = if target == "local"
     env_dir = homedir() * "/.julia/environments/askem/"
     sysimage_dir = env_dir
     if !isdir(env_dir)
-        mkdir(env_dir)
+        mkpath(env_dir)
     else
         @warn "An ASKEM environment is already installed.\n Would you like to overwrite your current ASKEM environment? [yes/no]"
         if lowercase(readline()) != "yes"
