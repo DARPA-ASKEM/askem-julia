@@ -12,8 +12,7 @@ COPY Project.toml Manifest.toml /
 RUN julia -e 'using Pkg; Pkg.instantiate()'
 COPY install.jl precompile.jl /
 RUN ./install.jl docker && \
-    julia -e 'using Pkg; using IJulia; IJulia.installkernel("Julia ASKEM"; julia=`julia --project=/ --threads=4`)' && \
-    rm -rf /usr/local/julia/compiled
+    julia -e 'using Pkg; using IJulia; IJulia.installkernel("Julia ASKEM"; julia=`julia --project=/ --threads=4`)'
 
 EXPOSE 8888
 EXPOSE 1234
