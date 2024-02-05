@@ -10,7 +10,8 @@ Pkg.instantiate()
 
 target = !(length(ARGS) == 0) ? lowercase(ARGS[1]) : "local"
 
-env_dir = if target == "local"
+env_dir = 
+  if target == "local"
     env_dir = homedir() * "/.julia/environments/askem/"
     if !isdir(env_dir)
         mkpath(env_dir)
@@ -24,11 +25,14 @@ env_dir = if target == "local"
     end
     cp("Project.toml", env_dir * "Project.toml"; force=true) 
     cp("Manifest.toml", env_dir * "Manifest.toml"; force=true) 
-    Pkg.activate(env_dir)
-    Pkg.instantiate()
     env_dir
+  else
+    "/"
 end
 
+
+Pkg.activate(env_dir)
+Pkg.instantiate()
 Pkg.precompile()
 
 if target == "local"
