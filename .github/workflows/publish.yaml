@@ -25,12 +25,26 @@ jobs:
   #           echo "tag=$TAG" >> $GITHUB_OUTPUT
 
   # Build and Publish all targets associated with specified group
-  bake:
+  bake-arm64:
     # needs:
     #   - generate-tag
     uses: darpa-askem/.github/.github/workflows/bake-publish.yml@main
     with:
-      file: 'docker/docker-bake.hcl'
+      file: 'docker/docker-bake-arm64.hcl'
+      group: 'prod'
+      registry: 'ghcr.io'
+      organization: ${{ github.repository_owner }}
+      # tag: ${{ needs.generate-tag.outputs.tag }}
+    secrets:
+      username: ${{ github.repository_owner }}
+      password: ${{ secrets.GITHUB_TOKEN }}
+
+  bake-amd64:
+    # needs:
+    #   - generate-tag
+    uses: darpa-askem/.github/.github/workflows/bake-publish.yml@main
+    with:
+      file: 'docker/docker-bake-amd64.hcl'
       group: 'prod'
       registry: 'ghcr.io'
       organization: ${{ github.repository_owner }}
