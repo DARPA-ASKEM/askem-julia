@@ -5,12 +5,12 @@
 name: Build Docker Images
 
 on:
-  workflow_dispatch:
-  pull_request:
-    branches: ['main']
-  # push:
+  # workflow_dispatch:
+  # pull_request:
   #   branches: ['main']
-  #   tags: ['*']
+  push:
+    branches: ['main']
+    tags: ['*']
 
 jobs:
   # When pushing into main will build the regular multi-arch image
@@ -25,11 +25,13 @@ jobs:
       - name: Determine target
         id: generate
         run: |
-          # if [[ '${{ github.event_name }}' == 'pull_request' ]]; then
-          #   TGT=askem-julia-base
-          # else
+          # NOTE: Using direct target names instead of group names as its a single
+          # image build and want to use the target as part of the output image tag
+          if [[ '${{ github.event_name }}' == 'pull_request' ]]; then
+            TGT=askem-julia-base
+          else
             TGT=askem-julia
-          # fi
+          fi
 
           echo "$TGT"
           echo "bake_target=${TGT,,}" >> ${GITHUB_OUTPUT}
@@ -62,7 +64,7 @@ jobs:
       #   - if tag is semantic version compliant use the version (strip prefix/suffix)
       #   - if tagged but not semver, use tag directly
       #   - if neither of the above and is default branch then use latest
-      # NOTE: that all 3 may be generated as tags but te priority for the version
+      # NOTE: that all 3 may be generated as tags but the priority for the version
       # to be embedded within the image label is top to bottom
       - name: Docker meta
         id: meta
@@ -107,6 +109,6 @@ jobs:
             "docker/docker-bake.hcl"
             ${{ steps.meta.outputs.bake-file }}
           targets: ${{ needs.bake-target.outputs.target }}
-          push: false
+          push: true
             
             

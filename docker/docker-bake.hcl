@@ -51,7 +51,6 @@ target "_platforms" {
 
 target "askem-julia-base" {
   context = "."
-  output = ["type=cacheonly"]
   dockerfile = "docker/Dockerfile"
   tags = tag("askem-julia", "", "")
 }
