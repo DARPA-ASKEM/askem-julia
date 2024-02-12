@@ -25,11 +25,11 @@ jobs:
       - name: Determine target
         id: generate
         run: |
-          if [[ '${{ github.event_name }}' == 'pull_request' ]]; then
-            TGT=askem-julia-base
-          else
+          # if [[ '${{ github.event_name }}' == 'pull_request' ]]; then
+          #   TGT=askem-julia-base
+          # else
             TGT=askem-julia
-          fi
+          # fi
 
           echo "$TGT"
           echo "bake_target=${TGT,,}" >> ${GITHUB_OUTPUT}
