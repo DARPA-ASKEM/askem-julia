@@ -2,7 +2,7 @@
 # Automatically build Docker images using a cloud builder and publish them to a
 # container registry using HCL Bake file.
 
-name: Build Docker Images
+name: Build Docker Images using Cloud Builder
 
 on:
   # workflow_dispatch:
@@ -71,7 +71,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5.5.0
         with:
-          images: ghcr.io/${{ github.repository }}/${{ needs.bake-target.outputs.target }}
+          images: ghcr.io/${{ github.repository }}
           tags: |
             type=semver,pattern={{version}}
             type=ref,event=tag
