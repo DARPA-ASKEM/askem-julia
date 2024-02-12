@@ -63,6 +63,7 @@ jobs:
       # priority list:
       #   - if tag is semantic version compliant use the version (strip prefix/suffix)
       #   - if tagged but not semver, use tag directly
+      #   - if no tag use PR branch
       #   - if neither of the above and is default branch then use latest
       # NOTE: that all 3 may be generated as tags but the priority for the version
       # to be embedded within the image label is top to bottom
@@ -73,6 +74,7 @@ jobs:
           images: ghcr.io/${{ github.repository }}/${{ needs.bake-target.outputs.target }}
           tags: |
             type=semver,pattern={{version}}
+            type=ref,event=tag
             type=ref,event=pr
             # set latest tag for default branch
             type=raw,value=latest,enable={{is_default_branch}}
