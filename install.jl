@@ -35,6 +35,13 @@ Pkg.activate(env_dir)
 Pkg.instantiate()
 Pkg.precompile()
 
+packages = Symbol.(keys(Pkg.project().dependencies))
+
+@info "Loading all dependencies to finish precompilation"
+for package in packages
+    eval(:(using $package))
+end
+
 if target == "local"
     @info """
         Run either
