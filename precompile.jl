@@ -1,25 +1,29 @@
-# import DataFrames
-# _precomp_df = DataFrames.DataFrame(A=1:2:1000, B=repeat(1:10, inner=50), C=1:500)
-# first(_precomp_df, 6)
+import DataFrames
+_precomp_df = DataFrames.DataFrame(A=1:2:1000, B=repeat(1:10, inner=50), C=1:500)
+first(_precomp_df, 6)
 
-# import Decapodes
-# _precomp_poise = Decapodes.@decapode begin
-#   P::Form0
-#   q::Form1
-#   (R, μ̃ )::Constant
+using Catlab
+using CombinatorialSpaces
+using DiagrammaticEquations
+using DiagrammaticEquations.Deca
+using Decapodes
+_precomp_poise = @decapode begin
+  P::Form0
+  q::Form1
+  (R, μ̃ )::Constant
 
-#   # Laplacian of q for the viscous effect
-#   Δq == Δ(q)
-#   # Gradient of P for the pressure driving force
-#   ∇P == d(P)
+  # Laplacian of q for the viscous effect
+  Δq == Δ(q)
+  # Gradient of P for the pressure driving force
+  ∇P == d(P)
 
-#   # Definition of the time derivative of q
-#   ∂ₜ(q) == q̇
+  # Definition of the time derivative of q
+  ∂ₜ(q) == q̇
 
-#   # The core equation
-#   q̇ == μ̃  * ∂q(Δq) + ∇P + R * q
-# end
-# _precomp_poise = Decapodes.expand_operators(_precomp_poise)
+  # The core equation
+  q̇ == μ̃  * ∂q(Δq) + ∇P + R * q
+end
+_precomp_poise = expand_operators(_precomp_poise)
 
 # import AlgebraicPetri
 # _precomp_birth_petri = AlgebraicPetri.Open(AlgebraicPetri.PetriNet(1, 1=>(1,1)));

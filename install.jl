@@ -35,12 +35,15 @@ Pkg.activate(env_dir)
 Pkg.instantiate()
 Pkg.precompile()
 
-packages = Symbol.(keys(Pkg.project().dependencies))
-
-@info "Loading all dependencies to finish precompilation"
-for package in packages
-    eval(:(using $package))
+import PrecompileTools: @compile_workload, @recompile_invalidations
+@recompile_invalidations begin 
+    using Decapodes
 end
+
+@compile_workload begin
+    include("./precompile.jl")
+end
+
 
 if target == "local"
     @info """

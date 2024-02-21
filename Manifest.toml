@@ -2,7 +2,7 @@
 
 julia_version = "1.10.0"
 manifest_format = "2.0"
-project_hash = "e34330800b38c9e3a716e6dfd869f609f47971b8"
+project_hash = "0b8316ec60746dc060e5b72bb6225b07e561db2f"
 
 [[deps.ACSets]]
 deps = ["AlgebraicInterfaces", "Base64", "CompTime", "DataStructures", "JSON3", "MLStyle", "OrderedCollections", "Permutations", "Pkg", "PrettyTables", "Random", "Reexport", "SHA", "StaticArrays", "StructEquality", "StructTypes", "Tables"]
@@ -2253,10 +2253,16 @@ version = "1.40.1"
     Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 
 [[deps.Pluto]]
-deps = ["Base64", "Configurations", "Dates", "Downloads", "ExpressionExplorer", "FileWatching", "FuzzyCompletions", "HTTP", "HypertextLiteral", "InteractiveUtils", "Logging", "LoggingExtras", "MIMEs", "Malt", "Markdown", "MsgPack", "Pkg", "PrecompileSignatures", "PrecompileTools", "REPL", "RegistryInstances", "RelocatableFolders", "Scratch", "Sockets", "TOML", "Tables", "URIs", "UUIDs"]
-git-tree-sha1 = "449f468cbb80c3eec6e6d8443a0913d8bbad4d0d"
+deps = ["Base64", "Configurations", "Dates", "Downloads", "ExpressionExplorer", "FileWatching", "FuzzyCompletions", "HTTP", "HypertextLiteral", "InteractiveUtils", "Logging", "LoggingExtras", "MIMEs", "Malt", "Markdown", "MsgPack", "Pkg", "PlutoDependencyExplorer", "PrecompileSignatures", "PrecompileTools", "REPL", "RegistryInstances", "RelocatableFolders", "Scratch", "Sockets", "TOML", "Tables", "URIs", "UUIDs"]
+git-tree-sha1 = "6a25e975f273cab1080780a990d84cfc80d6f676"
 uuid = "c3e4b0f8-55cb-11ea-2926-15256bba5781"
-version = "0.19.38"
+version = "0.19.39"
+
+[[deps.PlutoDependencyExplorer]]
+deps = ["ExpressionExplorer", "InteractiveUtils", "Markdown"]
+git-tree-sha1 = "dd77d591d2f72c49541dfd245630b3535b4ff7c4"
+uuid = "72656b73-756c-7461-726b-72656b6b696b"
+version = "1.0.3"
 
 [[deps.PoissonRandom]]
 deps = ["Random"]
@@ -2348,9 +2354,9 @@ version = "2.3.1"
 
 [[deps.Primes]]
 deps = ["IntegerMathUtils"]
-git-tree-sha1 = "1d05623b5952aed1307bf8b43bec8b8d1ef94b6e"
+git-tree-sha1 = "cb420f77dc474d23ee47ca8d14c90810cafe69e7"
 uuid = "27ebfcd6-29c5-5fa9-bf4b-fb8fc14df3ae"
-version = "0.5.5"
+version = "0.5.6"
 
 [[deps.Printf]]
 deps = ["Unicode"]
@@ -2451,9 +2457,9 @@ version = "0.6.12"
 
 [[deps.RecursiveArrayTools]]
 deps = ["Adapt", "ArrayInterface", "DocStringExtensions", "GPUArraysCore", "IteratorInterfaceExtensions", "LinearAlgebra", "RecipesBase", "SparseArrays", "StaticArraysCore", "Statistics", "SymbolicIndexingInterface", "Tables"]
-git-tree-sha1 = "09c906ce9fa905d40e0706cdb62422422091c22f"
+git-tree-sha1 = "baa011f308e084cd731e4610b4aeb74a5fee16a1"
 uuid = "731186ca-8d62-57ce-b412-fbd966d074cd"
-version = "3.8.1"
+version = "3.9.0"
 
     [deps.RecursiveArrayTools.extensions]
     RecursiveArrayToolsFastBroadcastExt = "FastBroadcast"
@@ -2795,9 +2801,9 @@ weakdeps = ["OffsetArrays", "StaticArrays"]
 
 [[deps.StaticArrays]]
 deps = ["LinearAlgebra", "PrecompileTools", "Random", "StaticArraysCore"]
-git-tree-sha1 = "7b0e9c14c624e435076d19aea1e5cbdec2b9ca37"
+git-tree-sha1 = "bf074c045d3d5ffd956fa0a461da38a44685d6b2"
 uuid = "90137ffa-7385-5640-81b9-e52037218182"
-version = "1.9.2"
+version = "1.9.3"
 weakdeps = ["ChainRulesCore", "Statistics"]
 
     [deps.StaticArrays.extensions]
@@ -2931,9 +2937,9 @@ uuid = "fb77eaff-e24c-56d4-86b1-d163f2edb164"
 version = "5.2.2+0"
 
 [[deps.SymbolicIndexingInterface]]
-git-tree-sha1 = "dc7186d456f9ff2bef0cb754a59758920f0b2382"
+git-tree-sha1 = "b74cb9508b6c0aa91d729dcbc7e35faf8998c549"
 uuid = "2efcf032-c050-4f8e-a9bb-153293bab1f5"
-version = "0.3.6"
+version = "0.3.7"
 
 [[deps.SymbolicUtils]]
 deps = ["AbstractTrees", "Bijections", "ChainRulesCore", "Combinatorics", "ConstructionBase", "DataStructures", "DocStringExtensions", "DynamicPolynomials", "IfElse", "LabelledArrays", "LinearAlgebra", "MultivariatePolynomials", "NaNMath", "Setfield", "SparseArrays", "SpecialFunctions", "StaticArrays", "SymbolicIndexingInterface", "TimerOutputs", "Unityper"]
@@ -2956,14 +2962,6 @@ version = "5.19.1"
     Groebner = "0b43b601-686d-58a3-8a1c-6623616c7cd4"
     PreallocationTools = "d236fae5-4411-538c-8e31-a6e3d9e00b46"
     SymPy = "24249f21-da20-56a4-8eb1-6a02cf4ae2e6"
-
-[[deps.SyntacticModels]]
-deps = ["ACSets", "Catlab", "DiagrammaticEquations", "JSON", "JSON3", "MLStyle", "Reexport", "StructTypes"]
-git-tree-sha1 = "619d979c64ec19c9f94ea54229bb57d1cd8ec983"
-repo-rev = "main"
-repo-url = "https://github.com/AlgebraicJulia/SyntacticModels.jl"
-uuid = "22bb929c-8bcf-4852-b455-eb3e1675e09c"
-version = "0.2.0"
 
 [[deps.TOML]]
 deps = ["Dates"]
