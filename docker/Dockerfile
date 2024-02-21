@@ -13,6 +13,7 @@ RUN julia -e 'using Pkg; Pkg.instantiate()'
 COPY install.jl precompile.jl /
 RUN ./install.jl docker && \
     julia -e 'using Pkg; using IJulia; IJulia.installkernel("Julia ASKEM"; julia=`julia --project=/ --threads=4`)'
+RUN julia --project=/ -e 'using Decapodes' # Force no precompile
 
 EXPOSE 8888
 EXPOSE 1234
