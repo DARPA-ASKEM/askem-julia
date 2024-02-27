@@ -9,7 +9,7 @@ ENV JULIA_PROJECT=/
 ENV JULIA_CPU_TARGET="native;tigerlake"
 
 WORKDIR /
-COPY Project.toml Manifest.toml install.jl precompile.jl
+COPY Project.toml Manifest.toml install.jl precompile.jl .
 RUN ./install.jl docker && \
     julia -e 'using Pkg; using IJulia; IJulia.installkernel("Julia ASKEM"; julia=`julia --project=/ --threads=4`)'
 RUN julia --project=/ -e 'using Decapodes' # Force no precompile
