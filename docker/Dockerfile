@@ -6,15 +6,13 @@ RUN apt update && \
 
 ENV JULIA_DEPOT_PATH=/usr/local/julia
 ENV JULIA_PROJECT=/
-ENV JULIA_CPU_TARGET=generic
+ENV JULIA_CPU_TARGET="native;tigerlake"
 
 WORKDIR /
-COPY Project.toml Manifest.toml /
-RUN JULIA_CPU_TARGET=generic julia -e 'using Pkg; Pkg.instantiate()'
-COPY install.jl precompile.jl /
-RUN JULIA_CPU_TARGET=generic ./install.jl docker && \
+COPY Project.toml Manifest.toml install.jl precompile.jl
+RUN ./install.jl docker && \
     julia -e 'using Pkg; using IJulia; IJulia.installkernel("Julia ASKEM"; julia=`julia --project=/ --threads=4`)'
-RUN JULIA_CPU_TARGET=generic julia --project=/ -e 'using Decapodes' # Force no precompile
+RUN julia --project=/ -e 'using Decapodes' # Force no precompile
 
 EXPOSE 8888
 EXPOSE 1234
