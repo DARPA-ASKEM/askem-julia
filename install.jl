@@ -5,6 +5,7 @@ if VERSION < NEEDED_VERSION
 end
 
 import Pkg
+Pkg.Registry.add(Pkg.RegistrySpec(url="https://github.com/mimiframework/MimiRegistry.git"))
 Pkg.activate(".")
 Pkg.instantiate()
 
