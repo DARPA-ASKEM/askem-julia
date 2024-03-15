@@ -5,8 +5,9 @@ if VERSION < NEEDED_VERSION
 end
 
 import Pkg
-Pkg.Registry.add(Pkg.RegistrySpec(url="https://github.com/mimiframework/MimiRegistry.git"))
 Pkg.activate(".")
+Pkg.Registry.add(Pkg.RegistrySpec(url="https://github.com/JuliaRegistries/General.git"))
+Pkg.Registry.add(Pkg.RegistrySpec(url="https://github.com/mimiframework/MimiRegistry.git"))
 Pkg.instantiate()
 
 target = !(length(ARGS) == 0) ? lowercase(ARGS[1]) : "local"

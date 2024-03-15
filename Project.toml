@@ -1,4 +1,4 @@
-version = "7.0.0"
+version = "8.0.0"
 
 [deps]
 ACSets = "227ef7b5-1206-438b-ac65-934d6da304b8"
@@ -25,9 +25,11 @@ ImageShow = "4e3cecfd-b093-5904-9786-8bbb286a6a31"
 Interpolations = "a98d9a8b-a2ab-59e6-89dd-64a1c18fca59"
 JLD2 = "033835bb-8acc-5ee8-8aae-3f567f8a3819"
 JSON3 = "0f8b85d8-7281-11e9-16c2-39a750bddbf1"
+LLMConvenience = "093a9562-ec77-459b-9d02-e35725675330"
 LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
 MLStyle = "d8e11817-5142-5d16-987a-aa16d5891078"
 Mimi = "e4e893b0-ee5e-52ea-8111-44b3bdec128c"
+MimiBRICK = "91f4afc7-28cd-4627-b11a-a83dc9ff1a58"
 MimiFUND = "b3ba11de-429f-11e9-29f7-cb478ab96e7c"
 ModelingToolkit = "961ee093-0014-501f-94e3-6117800e7a78"
 MultiScaleArrays = "f9640e96-87f6-5992-9c3b-0743c6a49ffa"
