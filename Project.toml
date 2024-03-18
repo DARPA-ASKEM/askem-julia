@@ -1,4 +1,4 @@
-version = "8.0.0"
+version = "8.0.1"
 
 [deps]
 ACSets = "227ef7b5-1206-438b-ac65-934d6da304b8"

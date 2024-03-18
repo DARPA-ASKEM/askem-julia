@@ -6,7 +6,7 @@ RUN apt update && \
 
 ENV JULIA_DEPOT_PATH=/usr/local/julia
 ENV JULIA_PROJECT=/
-ENV JULIA_CPU_TARGET="native;tigerlake"
+ENV JULIA_CPU_TARGET=generic
 
 WORKDIR /
 COPY Project.toml Manifest.toml install.jl precompile.jl .
